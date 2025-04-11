@@ -1,16 +1,77 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>
-            Online Games
-        </title>
-        <style>
-            body{
-                background-color: bisque;
-                font-family: Arial;
-                font-weight: 100;
-            font-style: normal;
-            }
-        </style>
-    </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Best Game Selector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Select Your Favorite Game Type</h2>
+  <form id="gameForm">
+    <label for="category">Choose a category:</label>
+    <select id="category" onchange="showGames()">
+      <option value="">--Select--</option>
+      <option value="action">Action/Adventure</option>
+      <option value="story">Story-Rich</option>
+      <option value="shooter">Shooter</option>
+      <option value="sandbox">Sandbox/Building</option>
+      <option value="indie">Indie</option>
+      <option value="fun">Fun/Weird</option>
+    </select>
+
+    <label for="games">Top Games:</label>
+    <textarea id="games" rows="6" readonly></textarea>
+  </form>
+</div>
+
+<script>
+  const games = {
+    action: "• The Legend of Zelda: Breath of the Wild / Tears of the Kingdom\n• Elden Ring",
+    story: "• Red Dead Redemption 2\n• The Last of Us (Part I & II)",
+    shooter: "• Call of Duty: Modern Warfare III (2023)\n• Counter-Strike 2",
+    sandbox: "• Minecraft\n• Terraria",
+    indie: "• Hades\n• Celeste",
+    fun: "• Among Us\n• Untitled Goose Game"
+  };
+
+  function showGames() {
+    const category = document.getElementById("category").value;
+    const textarea = document.getElementById("games");
+    textarea.value = games[category] || "";
+  }
+</script>
+
+</body>
 </html>
